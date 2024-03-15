@@ -17,42 +17,26 @@
 
     <!-- ROCK -->
     <button onclick="
-        let computermove ='';
-        const randomnum = Math.random(); //generates a rnadom number between 0 and 1
-        if (randomnum >0 && randomnum<1/3){
-             computermove = 'Rock';
-        } else if (randomnum >1/3 && randomnum< 2/3){
-             computermove = 'Paper';
-        }else if(randomnum >2/3 && randomnum< 1) {
-             computermove = 'Scissors';
-        }
-        let result ='';
-        if(computermove === 'Rock'){
-            result = ' there is a tie';
+           pickcomputermove();
 
-        }else if (computermove === 'Paper'){
-            result ='you lose';
-        }else if (computermove === 'Scissors'){
-            result= 'you win';
-        }
-        alert(`You choose Rock . The computer chose ${computermove} . The result is ${result}.`)
+           
+        
+            let result ='';
+            if(computermove === 'Rock'){
+                result = ' there is a tie';
+                
+            }else if (computermove === 'Paper'){
+                result ='you lose';
+            }else if (computermove === 'Scissors'){
+                result= 'you win';
+            }
+            alert(`You choose Rock . The computer chose ${computermove} . The result is ${result}.`)
 
     ">Rock</button>
 
         <!-- Papers -->
     <button onclick="
-    /*let computermove1= '';
-    let result1='';
-    const randomnum2 = Math.random();*/ //generates a rnadom number between 0 and 1
-    computermove ='';
-    randomnum = Math.random();
-    if (randomnum >1/3 && randomnum< 2/3){
-        computermove ='Paper';
-    }else if (randomnum >0 && randomnum <1){
-        computermove = 'Rock'
-    }else if (randomnum< 1 && randomnum > 2/3){
-        computermove= 'Scissors'
-    }
+   pickcomputermove();
 
     if (computermove ==='Paper'){
         result = 'tie';
@@ -71,15 +55,8 @@
     /*let computermove2= '';
     let result2='';
     const randomnum3 = Math.random(); */ //generates a rnadom number between 0 and 1
-    computermove ='';
-    randomnum = Math.random();
-    if (randomnum >1/3 && randomnum< 2/3){
-        computermove='Paper';
-    }else if (randomnum >0 && randomnum <1){
-        computermove = 'Rock'
-    }else if (randomnum < 1 && randomnum > 2/3){
-        computermove= 'Scissors'
-    }
+    
+    pickcomputermove();
 
     if (computermove ==='Paper'){
         result = ' you win';
@@ -104,7 +81,18 @@
      -->
 
      <script>
-        function pickcomputermove(){}
+        let computermove ='';
+        function pickcomputermove() {
+            
+            const randomnum = Math.random(); //generates a rnadom number between 0 and 1
+            if (randomnum >0 && randomnum<1/3){
+                computermove = 'Rock';
+            } else if (randomnum >1/3 && randomnum< 2/3){
+             computermove = 'Paper';
+            }else if(randomnum >2/3 && randomnum< 1) {
+                computermove = 'Scissors';
+            }
+        }
      </script>
 </body>
 </html>
