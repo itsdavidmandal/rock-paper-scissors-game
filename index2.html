@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+<!--
+    The algo is as follows :
+    1. Computer randomly selects a move 
+    2. Compare the move to get the results 
+    3. update a score 
+    4. display the result in popup 
+-->
+
+<p>Rock Paper Scissors </p>
+
+    <!-- ROCK -->
+<button onclick="playgame('Rock');">
+    Rock
+</button>
+
+    <!-- Papers -->
+<button onclick="playgame('Paper');">
+    Papers
+</button>
+
+    <!-- Scissors -->
+<button onclick="
+    playgame('Scissor');
+">Scissors</button>
+
+<button onclick="
+score.losses = 0;
+score.ties = 0;
+score.wins = 0 ;
+">
+    Reset
+</button>
+    <!-- 
+
+        The decision of choice for the computer is as follows :
+        1. If the random number is between 0 and 1/3 = rock
+        2. If the random number is between  1/3 and 2/3 = paper
+        3. If the random number is between 1 and 2/3 = scissor
+
+     -->
+
+     <script>
+    const score = { /* object to store the data */
+        wins:0,
+        losses : 0,
+        ties: 0
+    }; /*if the function was inside the score then the function would have made a new score everytime */
+
+    function playgame(playerMove)
+    {
+            /*let computermove2= '';
+        let result2='';
+        const randomnum3 = Math.random(); */ //generates a rnadom number between 0 and 1
+    
+        const computermove = pickcomputermove();
+    /* this saves the returned value from the function and then saves it to another variable i.e computermove . and then the processing is done on that variable */
+        let result = '';
+        if (playerMove === 'Scissor'){
+            if (computermove ==='Paper'){
+                result = 'you win';
+            }else if (computermove === 'Rock'){
+                result = 'you loose';
+            }else if (computermove ==='Scissors'){
+                result = 'there is a tie';
+            }
+        }else if (playerMove==='Paper'){
+            if (computermove ==='Paper'){
+                result = 'there is a tie';
+            }else if (computermove === 'Rock'){
+                 result = 'you win';
+            }else if (computermove ==='Scissors'){
+                result = 'you loose';
+            }
+        }else if (playerMove==='Rock'){
+            if(computermove === 'Rock'){
+                result = 'there is a tie';
+                
+            }else if (computermove === 'Paper'){
+                result ='you loose';
+            }else if (computermove === 'Scissors'){
+                result= 'you win';
+            }
+        }
+
+        if (result ==='you win'){
+            score.wins += 1;
+        }else if (result === 'you loose'){
+            score.losses += 1;
+        }else if (result ==='there is a tie'){
+            score.ties += 1;
+        }
+
+    alert(`You choose ${playerMove} . The computer chose ${computermove} . The result is ${result}.
+    Wins : ${score.wins} , Losses : ${score.losses} and Ties : ${score.ties}
+    `);
+    
+    }// end of play game function
+    
+
+
+
+
+        function pickcomputermove() {
+            let computermove ='';
+            const randomnum = Math.random(); //generates a rnadom number between 0 and 1
+            if (randomnum >0 && randomnum<1/3){
+                computermove = 'Rock';
+            } else if (randomnum >1/3 && randomnum< 2/3){
+             computermove = 'Paper';
+            }else if(randomnum >2/3 && randomnum< 1) {
+                computermove = 'Scissors';
+            }
+
+            return computermove ; // this trick is used to access the variable that is inside the function 
+        }
+     </script>
+</body>
+</html>
