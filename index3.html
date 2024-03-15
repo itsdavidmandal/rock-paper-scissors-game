@@ -34,7 +34,8 @@
 <button onclick="
 score.losses = 0;
 score.ties = 0;
-score.wins =
+score.wins = 0;
+localStorage.removeItem('score'); // Removes the item with the key 'score' from localStorage
 ">
     Reset
 </button>
@@ -49,8 +50,16 @@ score.wins =
 
      <script>
         //convert the string json to object , and then storing in the score object 
-    const score = JSON.parse(localStorage.getItem('score')); /*if the function was inside the score then the function would have made a new score everytime */
+    let score = JSON.parse(localStorage.getItem('score')); /*if the function was inside the score then the function would have made a new score everytime */
     
+    if (score === null){ // since the score object is non existance , we need to call it and set the default values 
+        score = {
+            wins :0 ,
+            losses: 0 ,
+            tie: 0, 
+        }
+    }
+
     function playgame(playerMove)
     {
         const computermove = pickcomputermove();
