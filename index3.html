@@ -31,11 +31,17 @@
     playgame('Scissor');
 ">Scissors</button>
 
+<p class="js-score"></p>
+<p class="js-result"></p>
+<p class="js-moves"></p>
+
+
 <button onclick="
 score.losses = 0;
 score.ties = 0;
 score.wins = 0;
 localStorage.removeItem('score'); // Removes the item with the key 'score' from localStorage
+updatescore();
 ">
     Reset
 </button>
@@ -48,7 +54,7 @@ localStorage.removeItem('score'); // Removes the item with the key 'score' from 
 
      -->
 
-     <script>
+     <script> /* TODO format the codes */
         //convert the string json to object , and then storing in the score object 
     let score = JSON.parse(localStorage.getItem('score')); /*if the function was inside the score then the function would have made a new score everytime */
     
@@ -56,9 +62,11 @@ localStorage.removeItem('score'); // Removes the item with the key 'score' from 
         score = {
             wins :0 ,
             losses: 0 ,
-            tie: 0, 
+            ties: 0, 
         }
     }
+
+    updatescore(); /* TODO  yo update score lai 2 thau ma kina rakhnu paryo ???*/
 
     function playgame(playerMove)
     {
@@ -102,13 +110,25 @@ localStorage.removeItem('score'); // Removes the item with the key 'score' from 
         // store the scores in "score " key of json .
         localStorage.setItem('score', JSON.stringify(score));
 
-    alert(`You choose ${playerMove} . The computer chose ${computermove} . The result is ${result}.
+        updatescore();
+
+        document.querySelector('.js-result')
+            .innerHTML = result ;
+
+        document.querySelector('.js-moves')
+            .innerHTML = `You ${playerMove} - ${computermove} Computer` ;
+
+    /*alert(`You choose ${playerMove} . The computer chose ${computermove} . The result is ${result}.
     Wins : ${score.wins} , Losses : ${score.losses} and Ties : ${score.ties}
-    `);
+    `);*/
     
     }// end of play game function
     
+        function updatescore(){
+            document.querySelector('.js-score')
+        .innerHTML = `Wins : ${score.wins} , Losses : ${score.losses} and Ties : ${score.ties}`;
 
+        }
 
 
 
